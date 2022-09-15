@@ -2,6 +2,7 @@ import {  BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from './routes/home/home.component';
 import Navigation from './routes/navigation/navigation.component';
 import Authentication from './routes/authentication/authentication.component';
+import { UserProvider } from './contexts/user.context';
 
 import React from 'react'
 
@@ -20,19 +21,22 @@ const App = () => {
     <div>
       <BrowserRouter>
 
+    <UserProvider>
 
-      <Routes>
-        <Route path='/' element={<Navigation />}>
+        <Routes>
+          <Route path='/' element={<Navigation />}>
 
-        {/* index property tells react to render component Home on the home page "/" */}
-        <Route index element={<Home />} />
+          {/* index property tells react to render component Home on the home page "/" */}
+          <Route index element={<Home />} />
 
-        <Route path='/shop' element={<Shop />} />
+          <Route path='/shop' element={<Shop />} />
 
-        <Route path='/auth' element={<Authentication />} />
+          <Route path='/auth' element={<Authentication />} />
 
-        </Route>
-      </Routes>
+          </Route>
+        </Routes>
+        
+      </UserProvider>
 
     </BrowserRouter>
     </div>
