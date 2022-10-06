@@ -4,6 +4,7 @@ import Navigation from './routes/navigation/navigation.component';
 import Authentication from './routes/authentication/authentication.component';
 import { UserProvider } from './contexts/user.context';
 import { ProductsProvider } from './contexts/products.context';
+import { CartProvider } from './contexts/cart.context';
 import Shop from './routes/shop/shop.component';
 
 
@@ -12,26 +13,26 @@ const App = () => {
   return (
     <div>
     <BrowserRouter>
-
       <UserProvider>
-
         <ProductsProvider>  
-          <Routes>
-            <Route path='/' element={<Navigation />}>
+          <CartProvider>
 
-            {/* index property tells react to render component Home on the home page "/" */}
-            <Route index element={<Home />} />
+            <Routes>
+              <Route path='/' element={<Navigation />}>
 
-            <Route path='/shop' element={<Shop />} />
+              {/* index property tells react to render component Home on the home page "/" */}
+              <Route index element={<Home />} />
 
-            <Route path='/auth' element={<Authentication />} />
+              <Route path='/shop' element={<Shop />} />
 
-            </Route>
-          </Routes>
+              <Route path='/auth' element={<Authentication />} />
+
+              </Route>
+            </Routes>
+
+          </CartProvider>
         </ProductsProvider>
-          
       </UserProvider>
-
     </BrowserRouter>
     </div>
   );
